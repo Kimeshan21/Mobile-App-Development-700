@@ -36,6 +36,15 @@ dependencies {
     implementation libs.appcompat
     implementation libs.constraintlayout
     implementation libs.material
+
+    implementation "androidx.appcompat:appcompat:1.7.1"
+    implementation "com.google.android.material:material:1.13.0"
+    implementation "androidx.activity:activity:1.10.1"
+    implementation "androidx.constraintlayout:constraintlayout:2.2.1"
+
+    implementation "androidx.room:room-runtime:2.8.3"
+    annotationProcessor "androidx.room:room-compiler:2.8.3"
+    
     testImplementation libs.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ext.junit
