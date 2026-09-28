@@ -3,22 +3,27 @@ package com.example.thesmartpantrymanager.database;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "pantry_items")
-public class PantryItem {
+@Entity(tableName = "recipe_ingredients")
+public class RecipeIngredient {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private String name;
+    private int recipeId;
+    private String ingredientName;
     private double quantity;
     private String unit;
-    private String expiryDate;
 
-    public PantryItem(String name, double quantity, String unit, String expiryDate) {
-        this.name = name;
+    public RecipeIngredient(
+            int recipeId,
+            String ingredientName,
+            double quantity,
+            String unit) {
+
+        this.recipeId = recipeId;
+        this.ingredientName = ingredientName;
         this.quantity = quantity;
         this.unit = unit;
-        this.expiryDate = expiryDate;
     }
 
     public int getId() {
@@ -29,12 +34,20 @@ public class PantryItem {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getRecipeId() {
+        return recipeId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public String getIngredientName() {
+        return ingredientName;
+    }
+
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
     }
 
     public double getQuantity() {
@@ -51,13 +64,5 @@ public class PantryItem {
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public String getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
     }
 }

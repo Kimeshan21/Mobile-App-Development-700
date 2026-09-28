@@ -10,11 +10,12 @@ import java.util.List;
 
 @Dao
 public interface PantryItemDao {
+
     @Insert
     void insert(PantryItem pantryItem);
-    
+
     @Query("SELECT * FROM pantry_items ORDER BY name ASC")
-    List<PantryItem> getAllItems();
+    List<PantryItem> getAll();
 
     @Update
     void update(PantryItem pantryItem);
@@ -23,5 +24,5 @@ public interface PantryItemDao {
     void delete(PantryItem pantryItem);
 
     @Query("SELECT * FROM pantry_items WHERE id = :id LIMIT 1")
-    PantryItem getItemById(int id);
+    PantryItem getById(int id);
 }
