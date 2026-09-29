@@ -45,4 +45,22 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp" />
 
+    <Button 
+        android:id="@+id/buttonProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Profile"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/textEmptyPantry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your pantry is empty.\nAdd ingredients to start discovering recipes!"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone" />
+
 </LinearLayout>

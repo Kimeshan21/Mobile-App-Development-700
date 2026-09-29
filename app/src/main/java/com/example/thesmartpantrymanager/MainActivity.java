@@ -3,6 +3,8 @@ package com.example.thesmartpantrymanager;
 import android.os.Bundle;
 import android.content.Intent;
 import android.widget.Button;
+import android.widget.TextView;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerPantry;
     private PantryAdapter pantryAdapter;
     private RecipeSeeder recipeSeeder;
+    private TextView textEmptyPantry;
 
     private AppDataBase database;
 
@@ -39,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerPantry.setLayoutManager(
                 new LinearLayoutManager(this)
         );
+
+        textEmptyPantry = findViewById(R.id.textEmptyPantry);
 
         pantryAdapter = new PantryAdapter(
                 new ArrayList<>(),
@@ -87,6 +92,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
+
+        Button buttonProfile =
+                findViewById(R.id.buttonProfile);
+
+        buttonProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -122,6 +135,13 @@ public class MainActivity extends AppCompatActivity {
 
             runOnUiThread(() -> {
                 pantryAdapter.updateItems(items);
+                if (items.isEmpty()) {
+                    recyclerPantry.setVisibility(View.GONE);
+                    textEmptyPantry.setVisibility(View.VISIBLE);
+                } else {
+                    recyclerPantry.setVisibility(View.VISIBLE);
+                    textEmptyPantry.setVisibility(View.GONE);
+                }
             });
         });
     }
